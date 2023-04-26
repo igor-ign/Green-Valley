@@ -23,7 +23,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/*/**/public").permitAll()
-                .antMatchers(POST, "/admin/login/**").permitAll()
+                .antMatchers(POST, "**").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
