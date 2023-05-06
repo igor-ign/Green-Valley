@@ -12,9 +12,9 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
+public class LoginRequest {
     @Email
-    @NotBlank(message = "Plase, inform your e-mail")
+    @NotBlank(message = "Please, inform your e-mail")
     private String email;
 
     @NotBlank(message = "Password is empty")

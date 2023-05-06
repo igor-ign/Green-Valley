@@ -1,40 +1,34 @@
 package br.com.gv.api.service;
 
-import br.com.gv.api.controller.request.UserRequest;
-import br.com.gv.api.security.JwtConfig;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import br.com.gv.api.controller.request.LoginRequest;
+import br.com.gv.api.domain.UserInfo;
+import br.com.gv.api.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @Service
 public class UserService {
+    private static final String INVALID_CREDENTIALS_MESSAGE = "Invalid username or password";
+    private static final String TOKEN = "12EGAHZ&$3_Sasa123EV";
 
     @Autowired
-    private JwtConfig jwtConfig;
+    private PasswordEncoder passwordEncoder;
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private UserInfoRepository userInfoRepository;
 
-    public ResponseEntity<String> login(UserRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
+    public ResponseEntity<String> login(LoginRequest request) {
+        UserInfo user = userInfoRepository.findByEmail(request.getEmail());
+        boolean hasCorrectPassword = passwordEncoder.matches(request.getPassword(), user.getUserPassword());
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = Jwts.builder()
-                .setSubject(authentication.getName())
-                .setExpiration(new Date(System.currentTimeMillis() + jwtConfig.getExpiration()))
-                .signWith(SignatureAlgorithm.HS512, jwtConfig.getSecret().getBytes())
-                .compact();
+        if (!hasCorrectPassword) {
+            return new ResponseEntity<>(INVALID_CREDENTIALS_MESSAGE, UNAUTHORIZED);
+        }
 
-        return new ResponseEntity<>(token, HttpStatus.OK);
+        return new ResponseEntity<>(TOKEN, OK);
     }
 }
