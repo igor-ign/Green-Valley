@@ -1,1 +1,1 @@
-export { INITIAL_FORM } from './form'
+export { INITIAL_FORM, INITIAL_FORM_ERROR } from './form'
