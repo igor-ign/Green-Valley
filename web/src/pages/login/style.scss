@@ -1,19 +1,19 @@
 @import '../../styles';
 
-.login-form {
+.form {
     background-color: white;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     font-family: 'Inter', sans-serif;
     height: 300px;
-    margin: 0 auto;
+    margin: auto;
     margin-top: 200px;
     max-width: 100%;
     padding: 10px;
     width: 500px;
 
-    > .submit-button {
+    > .form__button {
         align-self: center;
         background-color: $primary1;
         border-radius: 5px;
@@ -26,14 +26,15 @@
         width: 85%;
     }
 
-    > .input-container {
+    > .form__container {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
         padding-top: 30px;
         width: 85%;
+        position: relative;
 
-        input {
+        > .form__input {
             background-color: $input-default;
             border-radius: 5px;
             border: none;
@@ -44,13 +45,20 @@
 
         }
 
-        input::placeholder {
+        > input::placeholder {
             color: $input-font-default-color;
         }
         
-        label {
+        > label {
             font-weight: 600;
         }
 
+        > .password__visibility {
+            cursor: pointer;
+            position: absolute;
+            right: 4%;
+            top: 68%;
+            width: 20px;
+        }
     }
 }
