@@ -25,7 +25,9 @@ export function Login() {
   return (
     <form className="form">
       <div className="form__container">
-        <label htmlFor="login">Login</label>
+        <label htmlFor="login" className="input__label">
+          Login
+        </label>
         <input
           type="text"
           id="login"
@@ -35,7 +37,9 @@ export function Login() {
         />
       </div>
       <div className="form__container">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className="input__label">
+          Password
+        </label>
         <input
           type={isPasswordVisible ? "text" : "password"}
           id="password"
