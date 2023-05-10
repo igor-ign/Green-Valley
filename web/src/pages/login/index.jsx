@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addToken } from "../../slices/userSlice";
+import { ROUTES } from "../../app-constants";
 import { INITIAL_FORM, INITIAL_FORM_ERROR } from "./constants";
 import { useLogin } from "../../hooks";
 import { OPENED_EYE, CLOSED_EYE } from "../../statics";
@@ -11,6 +15,8 @@ export function Login() {
   const [formErrors, setFormErrors] = useState(INITIAL_FORM_ERROR);
   const [, setHasErrors] = useState(false);
   const { login } = useLogin();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -18,9 +24,8 @@ export function Login() {
     if (handleFormErrors()) return;
     try {
       const { data } = await login(form);
-      console.log(data);
-      // salvar no redux
-      // redirecionar para a página de dashboard
+      dispatch(addToken({ token: data }));
+      navigate(ROUTES.DASHBOARD);
     } catch (err) {
       console.error(err);
     }

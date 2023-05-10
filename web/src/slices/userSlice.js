@@ -7,7 +7,7 @@ export const userSlice = createSlice({
   },
   reducers: {
     addToken(state, action) {
-        state.push(action.payload)
+        state.value = action.payload
     }
   }
 })
