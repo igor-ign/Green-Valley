@@ -17,7 +17,10 @@ export function Login() {
 
     if (handleFormErrors()) return;
     try {
-      await login(form);
+      const { data } = await login(form);
+      console.log(data);
+      // salvar no redux
+      // redirecionar para a página de dashboard
     } catch (err) {
       console.error(err);
     }
@@ -25,10 +28,10 @@ export function Login() {
 
   function handleFormErrors() {
     const hasAnyEmptyField =
-      form.login.length === 0 || form.password.length === 0;
+      form.email.length === 0 || form.password.length === 0;
 
     setFormErrors({
-      LOGIN: form.login.length === 0,
+      EMAIL: form.email.length === 0,
       PASSWORD: form.password.length === 0,
     });
     setHasErrors(hasAnyEmptyField);
@@ -51,7 +54,7 @@ export function Login() {
   }
 
   function renderErrorMessage() {
-    const hasErrors = formErrors.LOGIN || formErrors.PASSWORD;
+    const hasErrors = formErrors.EMAIL || formErrors.PASSWORD;
 
     if (hasErrors) {
       return (
@@ -70,12 +73,12 @@ export function Login() {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__container">
-        <label htmlFor="login" className="input__label">
-          Login
+        <label htmlFor="email" className="input__label">
+          E-mail
         </label>
         <input
           type="text"
-          id="login"
+          id="email"
           placeholder="admin@gmail.com"
           onChange={handleChange}
           className="form__input"

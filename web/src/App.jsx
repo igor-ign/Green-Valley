@@ -8,6 +8,7 @@ function AppRoutes() {
     <div className="app-routes">
       <Routes>
         <Route path={ROUTES.LOGIN} element={<Login />} />
+        <Route path={ROUTES.DASHBOARD} element={<div>Dashboard page</div>} />
       </Routes>
     </div>
   );

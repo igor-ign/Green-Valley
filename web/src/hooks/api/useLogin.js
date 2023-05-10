@@ -1,11 +1,10 @@
 import axios from 'axios'
+import { API_BASE_URL } from '../../app-constants'
 
 export function useLogin() {
 
     function login(params) {
-        const response = axios.get('', params)
-
-        return response.data
+        return axios.post(`${API_BASE_URL}/admin/user/login`, params)
     }
 
     return {

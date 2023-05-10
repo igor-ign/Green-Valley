@@ -1,9 +1,9 @@
 export const INITIAL_FORM = {
-    login: '',
+    email: '',
     password: ''
 }
 
 export const INITIAL_FORM_ERROR = {
-    LOGIN: false,
+    EMAIL: false,
     PASSWORD: false
 }
