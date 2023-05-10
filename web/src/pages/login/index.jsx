@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToken } from "../../slices/userSlice";
 import { ROUTES } from "../../app-constants";
-import { INITIAL_FORM, INITIAL_FORM_ERROR } from "./constants";
+import { INITIAL_FORM } from "./constants";
 import { useLogin } from "../../hooks";
 import { OPENED_EYE, CLOSED_EYE } from "../../statics";
 import "./style.scss";
@@ -12,8 +12,7 @@ export function Login() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [showHideIcon, setShowHideIcon] = useState(OPENED_EYE);
-  const [formErrors, setFormErrors] = useState(INITIAL_FORM_ERROR);
-  const [, setHasErrors] = useState(false);
+  const [hasErrors, setHasErrors] = useState(false);
   const { login } = useLogin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,10 +34,6 @@ export function Login() {
     const hasAnyEmptyField =
       form.email.length === 0 || form.password.length === 0;
 
-    setFormErrors({
-      EMAIL: form.email.length === 0,
-      PASSWORD: form.password.length === 0,
-    });
     setHasErrors(hasAnyEmptyField);
 
     return hasAnyEmptyField;
@@ -59,15 +54,13 @@ export function Login() {
   }
 
   function renderErrorMessage() {
-    const hasErrors = formErrors.EMAIL || formErrors.PASSWORD;
-
     if (hasErrors) {
       return (
         <div className="error">
           <div className="error__message">
             Please, fill all fields correctly!
           </div>
-          <button className="error__close" onClick={() => setFormErrors(false)}>
+          <button className="error__close" onClick={() => setHasErrors(false)}>
             X
           </button>
         </div>
