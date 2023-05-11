@@ -8,10 +8,13 @@ export const userSlice = createSlice({
   reducers: {
     addToken(state, action) {
         state.value = action.payload
+    },
+    logout(state) {
+      state.value = {token: ''}
     }
   }
 })
 
-export const { addToken } = userSlice.actions
+export const { addToken, logout } = userSlice.actions
 
 export default userSlice.reducer

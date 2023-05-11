@@ -1,10 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { ExitToApp } from "@material-ui/icons";
 import { ADMIN_NAVBAR_ITEMS, ROUTES } from "../../../app-constants";
+import { logout } from "../../../slices/userSlice";
 import "./style.scss";
 
 export function AdminNavbar({ isOpen }) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  function handleLogout() {
+    dispatch(logout());
+    navigate(ROUTES.LOGIN);
+  }
+
   return (
     <nav className={`${isOpen ? "nav--open" : "nav--closed"}`}>
       <ul className="nav__items">
@@ -22,7 +31,7 @@ export function AdminNavbar({ isOpen }) {
           );
         })}
       </ul>
-      <button className="nav__logout" onClick={() => navigate(ROUTES.LOGIN)}>
+      <button className="nav__logout" onClick={handleLogout}>
         <div className="logout__icon">
           <ExitToApp />
         </div>
