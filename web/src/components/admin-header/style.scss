@@ -1,0 +1,35 @@
+@import '../../styles';
+
+.header {
+    align-items: center;
+    background-color: $primary1;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    height: 60px;
+    justify-content: center;
+    width: 100%;
+
+    > .nav__button {
+        background-color: #ffffff00;
+        border: none;
+        cursor: pointer;
+        position: fixed;
+        top: 16px;
+        z-index: 3;
+        transition: ease-in-out 0.2s;
+
+    }
+
+    .open {
+        left: 250px;
+    }
+
+    .closed {
+        left: 20px;
+    }
+
+    > .header__title {
+        color: $primary2;
+        font-size: 1.3rem;
+    }
+}

@@ -1,4 +1,4 @@
 export const ROUTES = {
     LOGIN: '/admin/login',
-    DASHBOARD: '/admin/dashboard'
+    ADMIN_HOUSES: '/admin/houses'
 }
