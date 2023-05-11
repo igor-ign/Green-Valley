@@ -1,3 +1,10 @@
+import { AdminHeader } from "../../components";
+import "./style.scss";
+
 export function AdminHouses() {
-  return <div>Houses page</div>;
+  return (
+    <div>
+      <AdminHeader title={"Houses"} />
+    </div>
+  );
 }
