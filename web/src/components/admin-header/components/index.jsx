@@ -9,8 +9,10 @@ export function AdminNavbar({ isOpen }) {
         {ADMIN_NAVBAR_ITEMS.map((item) => {
           return (
             <li key={item.id} className="nav__item">
-              <div className="item__icon">{item.icon}</div>
-              <h3 className="item__name">{item.name}</h3>
+              <button className="item__button">
+                <div className="item__icon">{item.icon}</div>
+                <h3 className="item__name">{item.name}</h3>
+              </button>
             </li>
           );
         })}
