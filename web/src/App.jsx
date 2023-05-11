@@ -8,7 +8,7 @@ function AppRoutes() {
     <div className="app-routes">
       <Routes>
         <Route path={ROUTES.LOGIN} element={<Login />} />
-        <Route path={ROUTES.DASHBOARD} element={<AdminHouses />} />
+        <Route path={ROUTES.ADMIN_HOUSES} element={<AdminHouses />} />
       </Routes>
     </div>
   );
