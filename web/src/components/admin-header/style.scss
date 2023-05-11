@@ -10,22 +10,22 @@
     width: 100%;
 
     > .nav__button {
-        background-color: $primary1;
+        background-color: #ffffff00;
         border: none;
         cursor: pointer;
-        left: 1%;
         position: fixed;
-        top: 1.6%;
+        top: 16px;
         z-index: 3;
+        transition: ease-in-out 0.2s;
 
     }
 
     .open {
-        background-color: $primary2;
+        left: 250px;
     }
 
     .closed {
-        background-color: $primary1;
+        left: 20px;
     }
 
     > .header__title {

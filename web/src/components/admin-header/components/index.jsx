@@ -1,3 +1,4 @@
+import { ExitToApp } from "@material-ui/icons";
 import { ADMIN_NAVBAR_ITEMS } from "../../../app-constants";
 import "./style.scss";
 
@@ -6,10 +7,20 @@ export function AdminNavbar({ isOpen }) {
     <nav className={`${isOpen ? "nav--open" : "nav--closed"}`}>
       <ul className="nav__items">
         {ADMIN_NAVBAR_ITEMS.map((item) => {
-          return <div key={item.id}>{item.name}</div>;
+          return (
+            <li key={item.id} className="nav__item">
+              <div className="item__icon">{item.icon}</div>
+              <h3 className="item__name">{item.name}</h3>
+            </li>
+          );
         })}
       </ul>
-      <div className="nav__logout">Logout</div>
+      <button className="nav__logout">
+        <div className="logout__icon">
+          <ExitToApp />
+        </div>
+        <h3 className="logout__text">Logout</h3>
+      </button>
     </nav>
   );
 }
