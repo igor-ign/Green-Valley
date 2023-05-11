@@ -17,6 +17,15 @@
         position: fixed;
         top: 1.6%;
         z-index: 3;
+
+    }
+
+    .open {
+        background-color: $primary2;
+    }
+
+    .closed {
+        background-color: $primary1;
     }
 
     > .header__title {

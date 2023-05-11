@@ -1,8 +1,10 @@
-export const ADMIN_NAVBAR_ITEMS = {
-    // TODO: Add admin pages in the following format:
-    // {
-    //     name: 'Houses',
-    //     icon: 'MUI-Icon',
-    //     path: 'path',
-    // }
-}
+import { ROUTES } from "./routes"
+
+export const ADMIN_NAVBAR_ITEMS = [
+    {
+        id: 1,
+        name: 'Houses',
+        icon: 'icon',
+        path: ROUTES.ADMIN_HOUSES
+    }
+]
