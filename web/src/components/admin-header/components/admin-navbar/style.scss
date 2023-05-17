@@ -1,4 +1,4 @@
-@import '../../../styles';
+@import '../../../../styles';
 
 .nav--closed {
     display: none;
@@ -21,30 +21,6 @@
     > .nav__items {
         width: 100%;
 
-        > .nav__item {
-
-            > .item__button {
-                align-items: center;
-                background-color: $primary2;
-                border: none;
-                cursor: pointer;
-                display: flex;
-                gap: 20px;
-                padding: 20px 30px;
-                transition: ease-in-out .3s;
-                width: 100%;
-                
-                > .item__name {
-                    font-size: 1rem;
-                    font-weight: 400;
-                }
-
-                &:hover {
-                    background-color: $navbar-button-hover;
-                }
-            }
-
-        }
     }
 
     > .nav__logout {
