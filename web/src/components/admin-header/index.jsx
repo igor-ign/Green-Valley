@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { OPENED_NAV, CLOSED_NAV } from "../../statics";
-import { AdminNavbar } from "./components";
+import { AdminNavbar } from "./components/admin-navbar";
 import "./style.scss";
 
 export function AdminHeader({ title }) {
