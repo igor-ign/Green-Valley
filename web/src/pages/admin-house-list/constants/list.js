@@ -1,0 +1,1 @@
+export const HOUSES_LIST_HEADER_ITEMS = ["Id", "Location", "Type", "Price"]

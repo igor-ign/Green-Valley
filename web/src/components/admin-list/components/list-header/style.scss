@@ -1,0 +1,26 @@
+@import '../../../../styles';
+
+.list__header {
+    background-color: $primary2;
+    border-bottom: .1em solid $black;
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+    font-family: 'Inter', sans-serif;
+    font-size: .9rem;
+    font-weight: 600;
+    margin: 50px auto;
+    width: 95%;
+
+    > .header__list {
+        display: flex;
+        justify-content: space-between;
+        padding: .3em;
+        width: 100%;
+        
+        > .list__item {
+            text-align: justify;
+            width: 120px;
+            margin: 2px;
+        }
+    }
+}
