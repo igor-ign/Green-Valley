@@ -2,9 +2,7 @@
 
 .list__header {
     background-color: $primary2;
-    border-bottom: .1em solid $black;
-    border-top-left-radius: .3em;
-    border-top-right-radius: .3em;
+    border-radius: .3em;
     font-family: 'Inter', sans-serif;
     font-size: .9rem;
     font-weight: 600;
@@ -20,7 +18,11 @@
         > .list__item {
             text-align: justify;
             width: 120px;
-            margin: 2px;
+            margin: 5px 10px;
+        }
+
+        > .--id {
+            width: 40px; 
         }
     }
 }

@@ -7,37 +7,37 @@ export function AdminHouses() {
   const MOCK_DATA = [
     {
       id: 1,
-      location: "Brooklyn, New York",
+      location: "Brooklyn,New York",
       type: "BUY",
       price: "$300.000,00",
     },
     {
       id: 2,
-      location: "Brooklyn, New York",
+      location: "Brooklyn,New York",
       type: "BUY",
       price: "$300.000,00",
     },
     {
       id: 3,
-      location: "Brooklyn, New York",
+      location: "Brooklyn,New York",
       type: "RENT",
       price: "$300.000,00",
     },
     {
       id: 4,
-      location: "Brooklyn, New York",
+      location: "Brooklyn,New York",
       type: "BUY",
       price: "$300.000,00",
     },
     {
       id: 5,
-      location: "Brooklyn, New York",
+      location: "Brooklyn,New York",
       type: "RENT",
       price: "$300.000,00",
     },
     {
       id: 6,
-      location: "Brooklyn, New York",
+      location: "Brooklyn,New York",
       type: "RENT",
       price: "$300.000,00",
     },
