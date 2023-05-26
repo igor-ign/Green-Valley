@@ -1,5 +1,4 @@
 export function List({ items, possibleActions }) {
-  // TODO: Improve the responsiveness of this component
   function renderPossibleActions() {
     // TODO: create a state to be used by this button onClick event
     return (
