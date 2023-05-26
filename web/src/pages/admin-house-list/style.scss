@@ -1,14 +1,10 @@
 @import '../../styles';
 
 .admin__house__list {
-
-    // Styles related to the header component
-    .list__header {
+    @mixin default__list__styles {
         background-color: $primary2;
         border-radius: .3em;
         font-family: 'Inter', sans-serif;
-        font-weight: 600;
-        margin: 50px auto;
         width: 95%;
 
         @include desktop {
@@ -18,6 +14,32 @@
         @include smartphone {
             font-size: .7rem;
         }
+
+    }
+
+    @mixin default__item__styles {
+        margin: 5px 10px;
+        text-align: justify;
+
+        @include desktop {
+            width: 200px;
+        }
+
+        @include tablet {
+            width: 150px;
+        }
+
+        @include smartphone {
+            width: 120px;
+        }
+    }
+
+    // Styles related to the header component
+    .list__header {
+        font-weight: 600;
+        margin: 50px auto;
+
+        @include default__list__styles;
     
         > .header__list {
             display: flex;
@@ -26,20 +48,7 @@
             width: 100%;
             
             > .header__list__item {
-                margin: 5px 10px;
-                text-align: justify;
-
-                @include desktop {
-                    width: 200px;
-                }
-
-                @include tablet {
-                    width: 150px;
-                }
-
-                @include smartphone {
-                    width: 120px;
-                }
+                @include default__item__styles;
             }
     
             > .--id {
@@ -50,20 +59,9 @@
 
     // Styles related to the list component
     .page__list {
-        background-color: $primary2;
-        border-radius: .3em;
-        font-family: 'Inter', sans-serif;
-        font-size: .9rem;
         margin: 0 auto;
-        width: 95%;
-
-        @include desktop {
-            font-size: .9rem;
-        }
-
-        @include smartphone {
-            font-size: .7rem;
-        }
+        
+        @include default__list__styles;
     
         > .list__item {
             align-items: center;
@@ -74,21 +72,7 @@
             width: 100%;
     
             > .item__content {
-                margin: 5px 10px;
-                text-align: justify;
-
-                @include desktop {
-                    width: 200px;
-                }
-
-                @include tablet {
-                    width: 150px;
-                }
-
-                @include smartphone {
-                    width: 120px;
-                }
-    
+                @include default__item__styles;
             }
     
             > .item__content--id {
