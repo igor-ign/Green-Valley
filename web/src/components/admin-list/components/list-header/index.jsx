@@ -1,5 +1,3 @@
-import "./style.scss";
-
 export function ListHeader({ headerItems, possibleActions }) {
   // TODO: Think about letting the components who have this one as a child to decide how SOME styles will behave
   return (

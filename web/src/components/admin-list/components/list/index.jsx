@@ -1,5 +1,3 @@
-import "./style.scss";
-
 export function List({ items, possibleActions }) {
   // TODO: Improve the responsiveness of this component
   function renderPossibleActions() {

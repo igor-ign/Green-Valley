@@ -44,7 +44,7 @@ export function AdminHouses() {
   ];
 
   return (
-    <div>
+    <div className="admin__house__list">
       <AdminHeader title={"Houses"} />
       <AdminList listItems={MOCK_DATA} headerItems={HOUSES_LIST_HEADER_ITEMS} />
       {/*TODO: Create a separated component responsible to return a object containing all possible steps. Also remember to create a state
