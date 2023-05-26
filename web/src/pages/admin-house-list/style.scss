@@ -7,10 +7,17 @@
         background-color: $primary2;
         border-radius: .3em;
         font-family: 'Inter', sans-serif;
-        font-size: .9rem;
         font-weight: 600;
         margin: 50px auto;
         width: 95%;
+
+        @include desktop {
+            font-size: .9rem;
+        }
+
+        @include smartphone {
+            font-size: .7rem;
+        }
     
         > .header__list {
             display: flex;
@@ -18,14 +25,25 @@
             padding: .3em;
             width: 100%;
             
-            > .list__item {
+            > .header__list__item {
                 text-align: justify;
-                width: 120px;
                 margin: 5px 10px;
+
+                @include desktop {
+                    width: 200px;
+                }
+
+                @include tablet {
+                    width: 150px;
+                }
+
+                @include smartphone {
+                    width: 120px;
+                }
             }
     
             > .--id {
-                width: 40px; 
+                width: 20px; 
             }
         }
     }
@@ -38,24 +56,43 @@
         margin: 0 auto;
         width: 95%;
         border-radius: .3em;
+
+        @include desktop {
+            font-size: .9rem;
+        }
+
+        @include smartphone {
+            font-size: .7rem;
+        }
     
         > .list__item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            padding: .3em;
+            padding: .6em;
             border-bottom: .1em solid $soft-black;
     
             > .item__content {
-                width: 120px;
                 text-align: justify;
                 margin: 5px 10px;
+
+                @include desktop {
+                    width: 200px;
+                }
+
+                @include tablet {
+                    width: 150px;
+                }
+
+                @include smartphone {
+                    width: 120px;
+                }
     
             }
     
             > .item__content--id {
-                width: 40px;
+                width: 20px;
                 text-align: justify;
                 margin: 5px 10px;
             }
