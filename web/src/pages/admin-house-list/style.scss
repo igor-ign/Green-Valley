@@ -1,0 +1,101 @@
+@import '../../styles';
+
+.admin__house__list {
+
+    // Styles related to the header component
+    .list__header {
+        background-color: $primary2;
+        border-radius: .3em;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        margin: 50px auto;
+        width: 95%;
+
+        @include desktop {
+            font-size: .9rem;
+        }
+
+        @include smartphone {
+            font-size: .7rem;
+        }
+    
+        > .header__list {
+            display: flex;
+            justify-content: space-between;
+            padding: .3em;
+            width: 100%;
+            
+            > .header__list__item {
+                margin: 5px 10px;
+                text-align: justify;
+
+                @include desktop {
+                    width: 200px;
+                }
+
+                @include tablet {
+                    width: 150px;
+                }
+
+                @include smartphone {
+                    width: 120px;
+                }
+            }
+    
+            > .--id {
+                width: 20px; 
+            }
+        }
+    }
+
+    // Styles related to the list component
+    .page__list {
+        background-color: $primary2;
+        border-radius: .3em;
+        font-family: 'Inter', sans-serif;
+        font-size: .9rem;
+        margin: 0 auto;
+        width: 95%;
+
+        @include desktop {
+            font-size: .9rem;
+        }
+
+        @include smartphone {
+            font-size: .7rem;
+        }
+    
+        > .list__item {
+            align-items: center;
+            border-bottom: .1em solid $soft-black;
+            display: flex;
+            justify-content: space-between;
+            padding: .6em;
+            width: 100%;
+    
+            > .item__content {
+                margin: 5px 10px;
+                text-align: justify;
+
+                @include desktop {
+                    width: 200px;
+                }
+
+                @include tablet {
+                    width: 150px;
+                }
+
+                @include smartphone {
+                    width: 120px;
+                }
+    
+            }
+    
+            > .item__content--id {
+                margin: 5px 10px;
+                text-align: justify;
+                width: 20px;
+            }
+        }
+    }
+}

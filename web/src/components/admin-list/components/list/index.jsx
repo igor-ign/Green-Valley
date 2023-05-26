@@ -1,9 +1,7 @@
-import "./style.scss";
-
 export function List({ items, possibleActions }) {
-  // TODO: Improve the responsiveness of this component
   function renderPossibleActions() {
     // TODO: create a state to be used by this button onClick event
+    // TODO: create a component for this render?
     return (
       <div className="item__content">
         {possibleActions.map((action) => (
