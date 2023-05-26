@@ -1,6 +1,12 @@
 @import '../../styles';
 
 .admin__house__list {
+    @mixin default__list__styles {
+        background-color: $primary2;
+        border-radius: .3em;
+        font-family: 'Inter', sans-serif;
+        width: 95%;
+    }
 
     // Styles related to the header component
     .list__header {
