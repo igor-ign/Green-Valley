@@ -26,8 +26,8 @@
             width: 100%;
             
             > .header__list__item {
-                text-align: justify;
                 margin: 5px 10px;
+                text-align: justify;
 
                 @include desktop {
                     width: 200px;
@@ -51,11 +51,11 @@
     // Styles related to the list component
     .page__list {
         background-color: $primary2;
+        border-radius: .3em;
         font-family: 'Inter', sans-serif;
         font-size: .9rem;
         margin: 0 auto;
         width: 95%;
-        border-radius: .3em;
 
         @include desktop {
             font-size: .9rem;
@@ -66,16 +66,16 @@
         }
     
         > .list__item {
+            align-items: center;
+            border-bottom: .1em solid $soft-black;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            width: 100%;
             padding: .6em;
-            border-bottom: .1em solid $soft-black;
+            width: 100%;
     
             > .item__content {
-                text-align: justify;
                 margin: 5px 10px;
+                text-align: justify;
 
                 @include desktop {
                     width: 200px;
@@ -92,9 +92,9 @@
             }
     
             > .item__content--id {
-                width: 20px;
-                text-align: justify;
                 margin: 5px 10px;
+                text-align: justify;
+                width: 20px;
             }
         }
     }
