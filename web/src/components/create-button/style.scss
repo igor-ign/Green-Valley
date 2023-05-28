@@ -1,0 +1,15 @@
+@import '../../styles';
+
+.create__button {
+    background-color: $primary1;
+    border-radius: 50%;
+    border: none;
+    bottom: 6.5%;
+    color: $primary2;
+    cursor: pointer;
+    font-size: 1.5rem;
+    height: 50px;
+    position: fixed;
+    right: 2.5%;
+    width: 50px;
+}
