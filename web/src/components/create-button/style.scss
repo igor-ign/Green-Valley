@@ -12,4 +12,8 @@
     position: fixed;
     right: 2.5%;
     width: 50px;
+
+    &:hover {
+        background-color: $primary1-hover;
+    }
 }
