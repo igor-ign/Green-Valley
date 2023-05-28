@@ -3,7 +3,7 @@ import { ROUTES } from "./routes"
 
 export const ADMIN_NAVBAR_ITEMS = [
     {
-        key: 0,
+        itemKey: 0,
         name: 'Houses',
         icon: <HomeWorkOutlined />,
         path: ROUTES.ADMIN_HOUSES
