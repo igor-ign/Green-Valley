@@ -5,11 +5,12 @@ export function ListHeader({ headerItems, possibleActions }) {
         {headerItems.map((item) => {
           return (
             <li
+              key={item.itemKey}
               className={`header__list__item ${
                 headerItems.indexOf(item) === 0 ? "--id" : ""
               }`}
             >
-              {item}
+              {item.name}
             </li>
           );
         })}

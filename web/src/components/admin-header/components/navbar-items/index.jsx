@@ -7,7 +7,7 @@ export function NavbarItems() {
       {ADMIN_NAVBAR_ITEMS.map((item) => {
         return (
           <NavbarItem
-            key={item.key}
+            itemKey={item.itemKey}
             path={item.path}
             name={item.name}
             icon={item.icon}
