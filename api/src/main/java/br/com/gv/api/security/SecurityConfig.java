@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
@@ -28,6 +29,7 @@ public class SecurityConfig {
                 .antMatchers("/*/**/public").permitAll()
                 .antMatchers("*").permitAll()
                 .antMatchers(POST, "/api/admin/user/login").permitAll()
+                .antMatchers(GET, "/api/cities").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
