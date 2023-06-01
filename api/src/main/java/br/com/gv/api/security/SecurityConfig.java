@@ -30,6 +30,8 @@ public class SecurityConfig {
                 .antMatchers("*").permitAll()
                 .antMatchers(POST, "/api/admin/user/login").permitAll()
                 .antMatchers(GET, "/api/cities").permitAll()
+                .antMatchers(GET, "/api/neighborhoods/**").permitAll()
+                .antMatchers(GET, "/api/neighborhoods").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()

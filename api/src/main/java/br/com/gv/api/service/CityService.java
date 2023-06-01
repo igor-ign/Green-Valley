@@ -16,6 +16,6 @@ public class CityService {
     private CityRepository cityRepository;
 
     public List<CityResponse> getCities() {
-        return cityRepository.findAll().stream().map(item -> CityMapper.toResponse(item)).collect(Collectors.toList());
+        return cityRepository.findAll().stream().map(CityMapper::toResponse).collect(Collectors.toList());
     }
 }
