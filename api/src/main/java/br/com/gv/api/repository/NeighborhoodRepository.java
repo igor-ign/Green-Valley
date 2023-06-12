@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface NeighborhoodRepository extends JpaRepository<Neighborhood, UUID> {
     List<Neighborhood> findAllByCityId(UUID cityId);
+    Neighborhood findByNeighborhoodId(UUID uuid);
 }
