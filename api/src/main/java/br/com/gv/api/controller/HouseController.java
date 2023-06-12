@@ -22,4 +22,6 @@ public class HouseController {
     public HttpStatus addNewHouse(@Valid @RequestBody HouseRequest request) {
         return houseService.addNewHouse(request);
     }
+
+
 }
