@@ -67,19 +67,19 @@ public class HouseService {
             house.setBuilding(request.getBuilding());
         }
 
-        if (nonNull(request.getPrice())) {
+        if (request.getPrice() != 0) {
             house.setPrice(request.getPrice());
         }
 
-        if (nonNull(request.getBedrooms())) {
+        if (request.getBedrooms() != 0) {
             house.setBedrooms(request.getBedrooms());
         }
 
-        if (nonNull(request.getBathrooms())) {
+        if (request.getBathrooms() != 0) {
             house.setBathrooms(request.getBathrooms());
         }
 
-        if (nonNull(request.getHouseSize())) {
+        if (request.getHouseSize() != 0) {
             house.setHouseSize(request.getHouseSize());
         }
 
