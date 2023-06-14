@@ -1,5 +1,6 @@
 package br.com.gv.api.service;
 
+import br.com.gv.api.controller.request.HouseEditRequest;
 import br.com.gv.api.controller.request.HouseRequest;
 import br.com.gv.api.domain.House;
 import br.com.gv.api.domain.Neighborhood;
@@ -9,14 +10,18 @@ import br.com.gv.api.validator.HouseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
+import org.springframework.web.server.ResponseStatusException;
 
 import static br.com.gv.api.mapper.HouseMapper.toEntity;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.OK;
 
 @Service
 public class HouseService {
+
+    private static final String INVALID_HOUSE_ID = "The house you're trying to edit does not exist.";
 
     @Autowired
     private HouseRepository houseRepository;
@@ -33,6 +38,56 @@ public class HouseService {
 
         House entity = toEntity(request, neighborhood);
         houseRepository.save(entity);
+
+        return OK;
+    }
+
+    public HttpStatus edit(HouseEditRequest request) {
+        House house = houseRepository.findHouseById(request.getHouseId());
+        Neighborhood newNeighborhood;
+
+        if (nonNull(request.getNeighborhoodId())) {
+            newNeighborhood = neighborhoodRepository.findNeighborhoodById(request.getNeighborhoodId());
+            house.setNeighborhood(newNeighborhood);
+        }
+
+        if (isNull(house)) {
+            throw new ResponseStatusException(BAD_REQUEST,  INVALID_HOUSE_ID);
+        }
+
+        if (nonNull(request.getStreet())) {
+            house.setStreet(request.getStreet());
+        }
+
+        if (nonNull(request.getNegociationType())) {
+            house.setHouseType(request.getNegociationType());
+        }
+
+        if (nonNull(request.getBuilding())) {
+            house.setBuilding(request.getBuilding());
+        }
+
+        if (nonNull(request.getPrice())) {
+            house.setPrice(request.getPrice());
+        }
+
+        if (nonNull(request.getBedrooms())) {
+            house.setBedrooms(request.getBedrooms());
+        }
+
+        if (nonNull(request.getBathrooms())) {
+            house.setBathrooms(request.getBathrooms());
+        }
+
+        if (nonNull(request.getHouseSize())) {
+            house.setHouseSize(request.getHouseSize());
+        }
+
+        if (nonNull(request.getDescription())) {
+            house.setDescription(request.getDescription());
+        }
+
+        houseRepository.save(house);
 
         return OK;
     }

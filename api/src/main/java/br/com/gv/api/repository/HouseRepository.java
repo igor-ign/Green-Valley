@@ -7,4 +7,5 @@ import java.util.UUID;
 
 public interface HouseRepository extends JpaRepository<House, UUID> {
 
+    House findHouseById(UUID uuid);
 }

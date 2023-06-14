@@ -13,6 +13,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class HouseEditRequest {
 
+    private UUID houseId;
+
     private UUID neighborhoodId;
 
     private String street;
