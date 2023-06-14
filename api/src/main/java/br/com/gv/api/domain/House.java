@@ -1,14 +1,11 @@
 package br.com.gv.api.domain;
 
-import br.com.gv.api.enumeration.BuildingType;
-import br.com.gv.api.enumeration.NegociationType;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
+
+import static javax.persistence.FetchType.LAZY;
 
 @Data
 @Builder
@@ -24,16 +21,17 @@ public class House {
     @Id
     private UUID id;
 
-    @Column(nullable = false)
-    private UUID neighborhoodId;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "neighborhood_id", referencedColumnName = "id")
+    private Neighborhood neighborhood;
 
     private String street;
 
     @Column(nullable = false)
-    private NegociationType houseType;
+    private String houseType;
 
     @Column(nullable = false)
-    private BuildingType buildingType;
+    private String building;
 
     @Column(nullable = false)
     private int price;

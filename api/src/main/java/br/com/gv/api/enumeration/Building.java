@@ -9,20 +9,20 @@ import static java.util.Objects.isNull;
 
 @Getter
 @AllArgsConstructor
-public enum NegociationType {
-    SELL("SELL"),
-    RENT("RENT");
+public enum Building {
+    HOUSE("HOUSE"),
+    APARTMENT("APARTMENT");
 
     private String value;
 
-    public static String getNegociationType(String type) {
+    public static String getBuildingType(String type) {
         if (isNull(type)) {
-            return SELL.getValue();
+            return HOUSE.getValue();
         }
 
-        return String.valueOf(Arrays.stream(NegociationType.values())
+        return String.valueOf(Arrays.stream(Building.values())
                 .filter(value -> value.getValue().equalsIgnoreCase(type))
                 .findFirst()
-                .orElse(SELL));
+                .orElse(HOUSE));
     }
 }

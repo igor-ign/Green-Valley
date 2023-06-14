@@ -2,18 +2,22 @@ package br.com.gv.api.mapper;
 
 import br.com.gv.api.controller.request.HouseRequest;
 import br.com.gv.api.domain.House;
+import br.com.gv.api.domain.Neighborhood;
 
 import java.util.UUID;
 
+import static br.com.gv.api.enumeration.Building.getBuildingType;
+import static br.com.gv.api.enumeration.NegociationType.getNegociationType;
+
 public class HouseMapper {
 
-    public static House toEntity(HouseRequest request) {
+    public static House toEntity(HouseRequest request, Neighborhood neighborhood) {
         return House.builder()
                 .id(UUID.randomUUID())
-                .neighborhoodId(request.getNeighborhoodId())
+                .neighborhood(neighborhood)
                 .street(request.getStreet())
-                .houseType(request.getNegociationType())
-                .buildingType(request.getBuildingType())
+                .houseType(getNegociationType(request.getNegociationType()))
+                .building(getBuildingType(request.getBuilding()))
                 .price(request.getPrice())
                 .bedrooms(request.getBedrooms())
                 .bathrooms(request.getBathrooms())

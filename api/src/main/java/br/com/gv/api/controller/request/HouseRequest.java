@@ -1,6 +1,6 @@
 package br.com.gv.api.controller.request;
 
-import br.com.gv.api.enumeration.BuildingType;
+import br.com.gv.api.enumeration.Building;
 import br.com.gv.api.enumeration.NegociationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,10 +22,10 @@ public class HouseRequest {
     private String street;
 
     @NotNull(message = "Please, inform the negociation type of this house (SELL / RENT).")
-    private NegociationType negociationType;
+    private String negociationType;
 
     @NotNull(message = "Please, inform the building type of this house (HOUSE / APARTMENT).")
-    private BuildingType buildingType;
+    private String building;
 
     @NotNull(message = "Please, inform the price of this house.")
     private int price;
