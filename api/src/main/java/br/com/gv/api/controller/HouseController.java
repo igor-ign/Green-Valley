@@ -1,5 +1,6 @@
 package br.com.gv.api.controller;
 
+import br.com.gv.api.controller.request.HouseEditRequest;
 import br.com.gv.api.controller.request.HouseRequest;
 import br.com.gv.api.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
