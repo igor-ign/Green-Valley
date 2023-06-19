@@ -6,13 +6,10 @@ import br.com.gv.api.domain.House;
 import br.com.gv.api.domain.Neighborhood;
 import br.com.gv.api.repository.HouseRepository;
 import br.com.gv.api.repository.NeighborhoodRepository;
-import br.com.gv.api.validator.HouseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.Objects;
 
 import static br.com.gv.api.mapper.HouseMapper.toEntity;
 import static java.util.Objects.isNull;
@@ -30,14 +27,10 @@ public class HouseService {
     private HouseRepository houseRepository;
 
     @Autowired
-    private HouseValidator houseValidator;
-
-    @Autowired
     private NeighborhoodRepository neighborhoodRepository;
 
     public HttpStatus addNewHouse(HouseRequest request) {
         Neighborhood neighborhood = neighborhoodRepository.findNeighborhoodById(request.getNeighborhoodId());
-        houseValidator.validate(request.getNeighborhoodId());
 
         House entity = toEntity(request, neighborhood);
         houseRepository.save(entity);
