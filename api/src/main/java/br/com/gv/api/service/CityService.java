@@ -8,6 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CityService {
 
@@ -16,5 +19,9 @@ public class CityService {
 
     public Page<CityResponse> getCities(Pageable pageable) {
         return cityRepository.findAll(pageable).map(CityMapper::toResponse);
+    }
+
+    public List<CityResponse> getAllCitiesNonPageable() {
+        return cityRepository.findAll().stream().map(CityMapper::toResponse).collect(Collectors.toList());
     }
 }
