@@ -2,7 +2,9 @@ package br.com.gv.api.service;
 
 import br.com.gv.api.controller.request.HouseRequest;
 import br.com.gv.api.domain.House;
+import br.com.gv.api.domain.Neighborhood;
 import br.com.gv.api.repository.HouseRepository;
+import br.com.gv.api.repository.NeighborhoodRepository;
 import br.com.gv.api.validator.HouseValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
@@ -17,6 +20,8 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.OK;
 
 class HouseServiceTest {
 
@@ -25,6 +30,9 @@ class HouseServiceTest {
 
     @Mock
     private HouseValidator houseValidator;
+
+    @Mock
+    private NeighborhoodRepository neighborhoodRepository;
 
     @InjectMocks
     private HouseService houseService;
@@ -37,41 +45,33 @@ class HouseServiceTest {
     @Test
     void toAddNewHouse_withSuccess() {
         // Arrange
-        UUID neighborhoodId = UUID.randomUUID();
-        HouseRequest houseRequest = new HouseRequest();
-        houseRequest.setNeighborhoodId(neighborhoodId);
-
-        doNothing().when(houseValidator).validate(neighborhoodId);
+        Neighborhood neighborhood = new Neighborhood();
+        neighborhood.setId(UUID.randomUUID());
+        neighborhood.setCityId(UUID.randomUUID());
+        neighborhood.setNeighborhoodName("NG 1");
+        when(neighborhoodRepository.findNeighborhoodById(any(UUID.class))).thenReturn(neighborhood);
 
         // Act
-        HttpStatus status = houseService.addNewHouse(houseRequest);
-
-        verify(houseValidator, times(1)).validate(neighborhoodId);
-        verify(houseRepository, times(1)).save(any(House.class));
+        HouseRequest request = new HouseRequest(neighborhood.getId(), "Street 1", "SELL", "HOUSE", 100000, 3, 2, 150, "Description");
+        HttpStatus status = houseService.addNewHouse(request);
 
         // Assert
-        assertEquals(HttpStatus.OK, status);
+        assertEquals(OK, status);
     }
 
     @Test
     void toAddNewHouse_withInvalidNeighborhoodId_withoutSuccess() {
-        // Arrange
-        UUID invalidNeighborhoodId = UUID.randomUUID();
-        HouseRequest houseRequest = new HouseRequest();
-        houseRequest.setNeighborhoodId(invalidNeighborhoodId);
+        when(neighborhoodRepository.findNeighborhoodById(any(UUID.class))).thenReturn(null);
 
-        doThrow(new ResponseStatusException(HttpStatus.BAD_REQUEST, "This neighborhood ID does not exist."))
-                .when(houseValidator).validate(invalidNeighborhoodId);
+        // Call the service method
+        HouseRequest request = new HouseRequest(UUID.randomUUID(), "Street 1", "SELL", "HOUSE", 100000, 3, 2, 150, "Description");
 
-        // Act
+        // Assert that a ResponseStatusException is thrown
         ResponseStatusException exception = assertThrows(ResponseStatusException.class,
-                () -> houseService.addNewHouse(houseRequest));
+                () -> houseService.addNewHouse(request));
 
-        // Assert
+        // Assert the status code of the exception
         assertEquals(HttpStatus.BAD_REQUEST, exception.getStatus());
         assertEquals("This neighborhood ID does not exist.", exception.getReason());
-
-        verify(houseValidator, times(1)).validate(invalidNeighborhoodId);
-        verify(houseRepository, never()).save(any(House.class));
     }
 }

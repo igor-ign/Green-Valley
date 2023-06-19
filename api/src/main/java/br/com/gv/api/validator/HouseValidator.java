@@ -20,7 +20,7 @@ public class HouseValidator {
     private NeighborhoodRepository neighborhoodRepository;
 
     public void validate(UUID neighborhoodId) {
-        Neighborhood neighborhood = neighborhoodRepository.getReferenceById(neighborhoodId);
+        Neighborhood neighborhood = neighborhoodRepository.findNeighborhoodById(neighborhoodId);
 
         if (isNull(neighborhood)) {
             throw new ResponseStatusException(BAD_REQUEST, INVALID_NEIGHBORHOOD_ID);

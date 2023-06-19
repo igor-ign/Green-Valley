@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Objects;
+
 import static br.com.gv.api.mapper.HouseMapper.toEntity;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -22,6 +24,7 @@ import static org.springframework.http.HttpStatus.OK;
 public class HouseService {
 
     private static final String INVALID_HOUSE_ID = "The house you're trying to edit does not exist.";
+    private static final String INVALID_NEIGHBORHOOD_ID = "This neighborhood ID does not exist.";
 
     @Autowired
     private HouseRepository houseRepository;
@@ -38,6 +41,10 @@ public class HouseService {
 
         House entity = toEntity(request, neighborhood);
         houseRepository.save(entity);
+
+        if (isNull(neighborhood)) {
+            throw new ResponseStatusException(BAD_REQUEST, INVALID_NEIGHBORHOOD_ID);
+        }
 
         return OK;
     }

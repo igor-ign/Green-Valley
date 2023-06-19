@@ -1,7 +1,5 @@
 package br.com.gv.api.controller.request;
 
-import br.com.gv.api.enumeration.Building;
-import br.com.gv.api.enumeration.NegociationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
