@@ -1,12 +1,17 @@
 package br.com.gv.api.service;
 
 import br.com.gv.api.controller.request.HouseEditRequest;
+import br.com.gv.api.controller.request.HouseFilterRequest;
 import br.com.gv.api.controller.request.HouseRequest;
+import br.com.gv.api.controller.response.HouseResponse;
 import br.com.gv.api.domain.House;
 import br.com.gv.api.domain.Neighborhood;
+import br.com.gv.api.mapper.HouseMapper;
 import br.com.gv.api.repository.HouseRepository;
 import br.com.gv.api.repository.NeighborhoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -90,5 +95,10 @@ public class HouseService {
         houseRepository.save(house);
 
         return OK;
+    }
+
+    public Page<HouseResponse> getHouses(HouseFilterRequest filters, Pageable pageable) {
+        return houseRepository.findHousesWithFilters(filters.getId(), filters.getNeighborhoodId(), filters.getMinPrice(), filters.getMaxPrice(), filters.getType(), pageable)
+                .map(HouseMapper::toResponse);
     }
 }

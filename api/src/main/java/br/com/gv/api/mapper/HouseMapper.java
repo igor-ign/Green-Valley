@@ -1,6 +1,7 @@
 package br.com.gv.api.mapper;
 
 import br.com.gv.api.controller.request.HouseRequest;
+import br.com.gv.api.controller.response.HouseResponse;
 import br.com.gv.api.domain.House;
 import br.com.gv.api.domain.Neighborhood;
 
@@ -23,6 +24,14 @@ public class HouseMapper {
                 .bathrooms(request.getBathrooms())
                 .houseSize(request.getHouseSize())
                 .description(request.getDescription())
+                .build();
+    }
+
+    public static HouseResponse toResponse(House entity) {
+        return HouseResponse.builder()
+                .type(entity.getHouseType())
+                .location(entity.getNeighborhood().getNeighborhoodName() + "," + entity.getStreet())
+                .price(entity.getPrice())
                 .build();
     }
 }
