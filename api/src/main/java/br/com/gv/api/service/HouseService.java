@@ -12,9 +12,12 @@ import br.com.gv.api.repository.NeighborhoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 import static br.com.gv.api.mapper.HouseMapper.toEntity;
 import static java.util.Objects.isNull;
@@ -98,7 +101,30 @@ public class HouseService {
     }
 
     public Page<HouseResponse> getHouses(HouseFilterRequest filters, Pageable pageable) {
-        return houseRepository.findHousesWithFilters(filters.getId(), filters.getNeighborhoodId(), filters.getMinPrice(), filters.getMaxPrice(), filters.getType(), pageable)
-                .map(HouseMapper::toResponse);
+        Specification<House> spec = Specification.where(null);
+
+        if (filters.getId() != null) {
+            spec = spec.and((root, query, builder) -> builder.equal(root.get("id"), filters.getId()));
+        }
+
+        if (filters.getNeighborhoodId() != null) {
+            spec = spec.and((root, query, builder) -> builder.equal(root.get("neighborhood").get("id"), filters.getNeighborhoodId()));
+        }
+
+        if (filters.getMinPrice() != 0) {
+            spec = spec.and((root, query, builder) -> builder.greaterThanOrEqualTo(root.get("price"), filters.getMinPrice()));
+        }
+
+        if (filters.getMaxPrice() != 0) {
+            spec = spec.and((root, query, builder) -> builder.lessThanOrEqualTo(root.get("price"), filters.getMaxPrice()));
+        }
+
+        if (filters.getType() != null) {
+            spec = spec.and((root, query, builder) -> builder.equal(root.get("houseType"), filters.getType()));
+        }
+
+        Page<House> houses = houseRepository.findAll(spec, pageable);
+
+        return houses.map(HouseMapper::toResponse);
     }
 }
