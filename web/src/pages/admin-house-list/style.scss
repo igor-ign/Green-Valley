@@ -34,7 +34,6 @@
         }
     }
 
-    // Styles related to the header component
     .list__header {
         font-weight: 600;
         margin: 50px auto;
@@ -50,14 +49,10 @@
             > .header__list__item {
                 @include default__item__styles;
             }
-    
-            > .--id {
-                width: 20px; 
-            }
+
         }
     }
 
-    // Styles related to the list component
     .page__list {
         margin: 0 auto;
         
@@ -74,12 +69,7 @@
             > .item__content {
                 @include default__item__styles;
             }
-    
-            > .item__content--id {
-                margin: 5px 10px;
-                text-align: justify;
-                width: 20px;
-            }
+
         }
     }
 }
