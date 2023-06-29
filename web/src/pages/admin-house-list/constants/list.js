@@ -1,9 +1,5 @@
 export const HOUSES_LIST_HEADER_ITEMS = [
     {
-        name: 'Id', 
-        itemKey: 0
-    }, 
-    {
         name: "Location", 
         itemKey: 1
     }, 
