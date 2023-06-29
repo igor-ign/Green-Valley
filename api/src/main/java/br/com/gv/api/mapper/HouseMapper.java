@@ -29,6 +29,7 @@ public class HouseMapper {
 
     public static HouseResponse toResponse(House entity) {
         return HouseResponse.builder()
+                .id(entity.getId())
                 .type(entity.getHouseType())
                 .location(entity.getNeighborhood().getNeighborhoodName() + "," + entity.getStreet())
                 .price(entity.getPrice())
