@@ -1,7 +1,6 @@
 export function List({ items, possibleActions }) {
   function renderPossibleActions() {
     // TODO: create a state to be used by this button onClick event
-    // TODO: create a component for this render?
     return (
       <div className="item__content">
         {possibleActions.map((action) => (
@@ -13,9 +12,9 @@ export function List({ items, possibleActions }) {
 
   return (
     <ul className="page__list" type="none">
-      {items.map((item) => {
+      {items?.map((item) => {
         return (
-          <li key={item.id} className="list__item">
+          <li key={`${item.location}`} className="list__item">
             <div className="item__content--id">{item.id}</div>
             <div className="item__content">{item.location}</div>
             <div className="item__content">{item.type}</div>

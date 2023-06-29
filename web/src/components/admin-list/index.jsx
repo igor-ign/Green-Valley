@@ -3,7 +3,7 @@ import "./style.scss";
 
 export function AdminList({ listItems, headerItems, possibleActions = "" }) {
   return (
-    <div className="houses__list">
+    <div className="admin__list">
       <ListHeader headerItems={headerItems} possibleActions={possibleActions} />
       <List items={listItems} />
     </div>
