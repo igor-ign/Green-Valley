@@ -14,11 +14,11 @@ export function List({ items, possibleActions }) {
     <ul className="page__list" type="none">
       {items?.map((item) => {
         return (
-          <li key={`${item.location}`} className="list__item">
-            <div className="item__content--id">{item.id}</div>
-            <div className="item__content">{item.location}</div>
-            <div className="item__content">{item.type}</div>
-            <div className="item__content">{item.price}</div>
+          <li key={`${item.id}`} className="list__item">
+            {Object.keys(item).map((key) => {
+              if (key !== "id")
+                return <div className="item__content">{item[key]}</div>;
+            })}
             {!!possibleActions && renderPossibleActions()}
           </li>
         );
