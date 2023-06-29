@@ -31,7 +31,7 @@ public class HouseController {
     }
 
     @GetMapping
-    public Page<HouseResponse> getHouses(@RequestBody HouseFilterRequest filters, Pageable pageable) {
+    public Page<HouseResponse> getHouses(HouseFilterRequest filters, Pageable pageable) {
         return houseService.getHouses(filters, pageable);
     }
 }
