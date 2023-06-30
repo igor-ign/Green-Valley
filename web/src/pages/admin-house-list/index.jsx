@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { HOUSE_LIST_SCREENS } from "../../app-constants";
-import { AdminHeader, AdminList, CreateButton } from "../../components";
+import { AdminHeader, CreateButton } from "../../components";
 import { useHouses } from "../../hooks";
-import { HOUSES_LIST_HEADER_ITEMS, INITIAL_FILTERS } from "./constants";
+import { INITIAL_FILTERS } from "./constants";
+import { housesListSteps } from "./utils";
 import "./style.scss";
 
 export function AdminHouses() {
@@ -44,13 +45,10 @@ export function AdminHouses() {
   return (
     <div className="admin__house__list">
       <AdminHeader title={"Houses"} />
-      <AdminList listItems={data} headerItems={HOUSES_LIST_HEADER_ITEMS} />
+      {housesListSteps(data)[currentScreen]}
       <CreateButton
         onClick={() => setCurrentScreen(HOUSE_LIST_SCREENS.CREATE)}
       />
-      {/*TODO: Create a separated component responsible to return a object containing all possible steps. Also remember to create a state
-      to control those steps!
-      */}
     </div>
   );
 }
