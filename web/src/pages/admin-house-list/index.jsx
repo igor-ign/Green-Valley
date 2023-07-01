@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { HOUSE_LIST_SCREENS } from "../../app-constants";
 import { AdminHeader, CreateButton } from "../../components";
-import { useHouses } from "../../hooks";
-import { INITIAL_FILTERS } from "./constants";
+import { useHouses, useToast } from "../../hooks";
+import { INITIAL_FILTERS, LIST_ERROR_MESSAGE } from "./constants";
 import { housesListSteps } from "./utils";
 import "./style.scss";
 
@@ -13,6 +13,7 @@ export function AdminHouses() {
   const [data, setData] = useState();
   const [filters, setFilters] = useState(INITIAL_FILTERS);
   const { getHouses } = useHouses();
+  const { showErrorToastWithAutoClose } = useToast();
 
   useEffect(() => {
     async function getAllHouses() {
@@ -29,7 +30,7 @@ export function AdminHouses() {
         setData(data.content);
       } catch (error) {
         console.error(error);
-        // TODO: add toast
+        showErrorToastWithAutoClose(LIST_ERROR_MESSAGE);
       }
     }
 
