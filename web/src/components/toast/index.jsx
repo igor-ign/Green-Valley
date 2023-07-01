@@ -10,13 +10,9 @@ export function Toast() {
   const toastIcon =
     toast.type === TOAST_TYPE.ERROR ? <Error /> : <CheckCircle />;
 
-  function handleClose() {
-    dispatch(closeToast());
-  }
-
   return (
     <dialog className={`toast__${toast.status}--${toast.type}`}>
-      <button className="toast__exit" onClick={handleClose}>
+      <button className="toast__exit" onClick={() => dispatch(closeToast())}>
         X
       </button>
       <div className="toast__content">
