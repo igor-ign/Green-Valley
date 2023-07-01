@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { HOUSE_LIST_SCREENS } from "../../app-constants";
 import { AdminHeader, CreateButton } from "../../components";
 import { useHouses } from "../../hooks";
+import { successToast } from "../../slices/toastSlice";
 import { INITIAL_FILTERS } from "./constants";
 import { housesListSteps } from "./utils";
 import "./style.scss";
@@ -13,6 +15,7 @@ export function AdminHouses() {
   const [data, setData] = useState();
   const [filters, setFilters] = useState(INITIAL_FILTERS);
   const { getHouses } = useHouses();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getAllHouses() {
@@ -27,9 +30,9 @@ export function AdminHouses() {
 
         const { data } = await getHouses(params);
         setData(data.content);
+        dispatch(successToast("nice!"));
       } catch (error) {
         console.error(error);
-        // TODO: add toast
       }
     }
 

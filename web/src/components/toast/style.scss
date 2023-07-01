@@ -1,0 +1,82 @@
+@import '../../styles';
+
+@mixin default__toast__config {
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    height: 70px;
+    left: 10px;
+    position: fixed;
+    top: 30px;
+    width: 250px;
+    z-index: 99999;
+    font-size: .95rem;
+}
+
+.toast__closed--none {
+    display: none;
+}
+
+.toast__opened--success {
+    @include default__toast__config();
+    background-color: $success;
+
+    > .toast__content {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: auto 0;
+        max-width: 90%;
+        overflow: hidden;
+        padding: 5px;
+
+        > .toast__message--success {
+            color: $primary2;
+            max-width: 100%;
+        }
+    
+        > .toast__icon--success {
+            color: $primary2;
+            margin-right: 20px;
+            max-width: 100%;
+        }
+    }
+
+}
+
+.toast__opened--error {
+    @include default__toast__config();
+    background-color: $error;
+
+    > .toast__content {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: auto 0;
+        max-width: 90%;
+        overflow: hidden;
+        padding: 5px;
+
+        > .toast__message--error {
+            color: $primary2;
+            max-width: 100%;
+        }
+    
+        > .toast__icon--error {
+            color: $primary2;
+            margin-right: 20px;
+            max-width: 100%;
+        }
+    }
+}
+
+.toast__exit {
+    background-color: rgba(0, 255, 255, 0);
+    border: none;
+    color: $primary2;
+    cursor: pointer;
+    position: absolute;
+    right: 3%;
+    top: 10%;
+}
