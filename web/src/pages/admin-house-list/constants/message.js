@@ -1,0 +1,1 @@
+export const LIST_ERROR_MESSAGE = "Error while trying to load the list of houses."

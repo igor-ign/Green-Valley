@@ -8,3 +8,5 @@ export const TOAST_TYPE = {
     ERROR: 'error',
     NONE: 'none'
 }
+
+export const DEFAULT_TOAST_DURATION = 7000
